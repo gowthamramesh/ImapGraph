@@ -92,30 +92,37 @@ public class ReadExcel
 	{
 		Workbook wb = Workbook.getWorkbook(file);
 		WritableWorkbook writableWorkbook = Workbook.createWorkbook(file, wb);
+		for (int k = 1; k < writableWorkbook.getNumberOfSheets(); k++)
+		{
+			writableWorkbook.removeSheet(k);
+		}
 		int index = 1;
-		for (Map.Entry<Integer, Trip> entry : tripList.entrySet()) {
-		    int tripId = entry.getKey();
-		    Trip trip = entry.getValue();
-		    
-		    WritableSheet writableSheet = writableWorkbook.createSheet(Integer.toString(tripId), index);
-		    Label second = new Label(0, 0, "SECOND");
-		    writableSheet.addCell(second);
-		    Label speed = new Label(1, 0, "SPEED");
-		    writableSheet.addCell(speed);
-		    
-		    ArrayList<Integer> speedList = trip.getSpeedList();
-		    for(int j=0;j<speedList.size();j++)
-		    {
-		    	Number sec = new Number(0,j+1,j);
-		    	writableSheet.addCell(sec);
-		    	Number spd = new Number(1,j+1,speedList.get(j));
-		    	writableSheet.addCell(spd);
-		    }
-		    index++;
+		for (Map.Entry<Integer, Trip> entry : tripList.entrySet())
+		{
+			int tripId = entry.getKey();
+			Trip trip = entry.getValue();
+			
+		
+			WritableSheet writableSheet = writableWorkbook.createSheet(
+					Integer.toString(tripId), index);
+			Label second = new Label(0, 0, "SECOND");
+			writableSheet.addCell(second);
+			Label speed = new Label(1, 0, "SPEED");
+			writableSheet.addCell(speed);
+			
+			ArrayList<Integer> speedList = trip.getSpeedList();
+			for (int j = 0; j < speedList.size(); j++)
+			{
+				Number sec = new Number(0, j + 1, j);
+				writableSheet.addCell(sec);
+				Number spd = new Number(1, j + 1, speedList.get(j));
+				writableSheet.addCell(spd);
+			}
+			index++;
 		}
 		// Write and close the workbook
 		writableWorkbook.write();
 		writableWorkbook.close();
-		
+		System.exit(0);
 	}
 }
