@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Frame;
+import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -11,6 +12,7 @@ import javax.swing.border.EtchedBorder;
 public class MainImapGraph extends JFrame
 {
 	private static MainImapGraph	mainFrame;
+	private static File	selectedExcel;
 	private JPanel	basePanel;
 	private JPanel	mainPanel;
 	
@@ -61,6 +63,12 @@ public class MainImapGraph extends JFrame
 			}
 
 		});
+	}
+
+	public static void setSelectedExcelFile(File selectedFile)
+	{
+		selectedExcel = selectedFile;
+		
 	}
 
 }

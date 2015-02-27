@@ -1,6 +1,10 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
 public class MainPanel
@@ -65,7 +69,21 @@ public class MainPanel
 
 		jTextField5.setText("jTextField5");
 
-		jButton1.setText("jButton1");
+		jButton1.setText("Select Excel file");
+		jButton1.addActionListener(new ActionListener()
+		{
+			
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				JFileChooser filechooser  = new JFileChooser("C:\\Users\\gowtham\\workspace\\ImapGraph\\i2D");
+				filechooser.showOpenDialog(mainpanel);
+				File selectedFile = filechooser.getSelectedFile();
+				MainImapGraph.setSelectedExcelFile(selectedFile);
+				ReadExcel.readFile(selectedFile);
+				
+			}
+		});
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(mainpanel);
 		mainpanel.setLayout(layout);
