@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 public class Trip
@@ -6,6 +8,7 @@ public class Trip
 
 	int tripId = 0;
 	private ArrayList<Integer> speedList = new ArrayList<Integer>();
+	private GregorianCalendar	timeVal;
 	
 	public Trip(int tripIdVal)
 	{
@@ -21,6 +24,16 @@ public class Trip
 	{
 		return speedList;
 		
+	}
+
+	public void setTime(GregorianCalendar calendar)
+	{
+		timeVal = calendar;
+	}
+
+	public Date getDateTime()
+	{
+		return timeVal.getTime();
 	}
 	
 }

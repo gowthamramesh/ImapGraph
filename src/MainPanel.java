@@ -76,7 +76,7 @@ public class MainPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				JFileChooser filechooser  = new JFileChooser("C:\\Users\\gowtham\\workspace\\ImapGraph\\i2D");
+				JFileChooser filechooser  = new JFileChooser(System.getProperty("user.dir"));
 				filechooser.showOpenDialog(mainpanel);
 				File selectedFile = filechooser.getSelectedFile();
 				MainImapGraph.setSelectedExcelFile(selectedFile);
